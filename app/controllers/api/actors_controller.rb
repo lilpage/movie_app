@@ -4,6 +4,11 @@ class Api::ActorsController < ApplicationController
     @actors = Actor.all
     render "index.json.jb"
   end
+  
+  def show
+    @actor = Actor.find_by(id: params[:id])
+    render "show.json.jb"
+  end
 
   def create
     @actor = Actor.new(
@@ -13,13 +18,11 @@ class Api::ActorsController < ApplicationController
       gender: params[:gender],
       known_for: params[:known_for]
     )
-    @actor.save
-    render "show.json.jb"
-  end
-
-  def show
-    @actor = Actor.find_by(id: params[:id])
-    render "show.json.jb"
+    if @actor.save
+      render "show.json.jb"
+    else
+      render json: {errors: @actor.errors.full_messages}, status: 406
+    end
   end
 
   def update
@@ -29,7 +32,11 @@ class Api::ActorsController < ApplicationController
     @actor.age = params[:age] || @actor.age
     @actor.gender = params[:gender] || @actor.gender
     @actor.known_for = params[:known_for] || @actor.known_for
-    @actor.save
+    if @actor.save
+      render "show.json.jb"
+    else
+      render json: {errors: @actor.errors.full_messages}, status: 406
+    end
   end
 
 end
