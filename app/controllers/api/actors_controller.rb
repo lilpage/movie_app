@@ -39,4 +39,10 @@ class Api::ActorsController < ApplicationController
     end
   end
 
+  def delete
+    @actor = Actor.find_by(id: params[:id])
+    @actor.destroy
+    render json: {message: "Successfully deleted!"}
+  end
+
 end

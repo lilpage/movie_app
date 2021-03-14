@@ -39,4 +39,10 @@ class Api::MoviesController < ApplicationController
     end
   end
 
+  def delete
+    @movie = Movie.find_by(id: params[:id])
+    @movie.destroy
+    render json: {message: "Successfully deleted!"}
+  end
+
 end
