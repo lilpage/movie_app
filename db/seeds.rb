@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Actor.destroy_all
 Movie.destroy_all
+Genre.destroy_all
 
 # 10.times do
 #   Actor.create(first_name: FFaker::Name.first_name, last_name: FFaker::Name.last_name, known_for: FFaker::Movie.title)
@@ -19,3 +20,7 @@ Actor.create(first_name: "Leonardo", last_name: "DiCaprio", age: 46, gender: "Ma
 
 Movie.create(title: "Romeo+Juliet", year: 1996, director: "Baz Luhrman", plot: "Two households, both alike in dignity, in fair Verona where we set our scene. From ancient grudge break new mutiny, where civil blood makes civil hands unclean. From forth the fatal loins of these two foes, a pair of star-cross'd lovers take their life: whose misadventures piteous overthrows, do with their death bury their parents' strife.", english: true)
 Movie.create(title: "The Princess Bride", year: 1987, director: "Rob Reiner", plot: "Fencing, fighting, torture, revenge, giants, monsters, chases, escapes, true love, miracles!", english: true)
+
+Genre.create(name: "Adventure")
+Genre.create(name: "Romance")
+Genre.create(name: "Comedy")
